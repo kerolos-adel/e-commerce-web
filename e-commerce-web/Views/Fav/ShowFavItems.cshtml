@@ -1,0 +1,34 @@
+﻿@model IEnumerable<e_commerce_web.database.FavItem>
+
+@{
+    Layout = "~/Views/Shared/_FavLayout.cshtml";
+}
+@foreach (var item in Model)
+{
+
+    <div class="row align-items-center gy-4 text-center text-md-start">
+        <div class="col-md-5 box">
+            <img src="~/uploads/images/@item.Items.Image_ID" loading="lazy" class=" w-100 img-fluid  bg-secondary bg-opacity-10 rounded-top" alt="@item.Items.Name">
+        </div>
+        <div class="col-md-7 text-center">
+            <div class="" px-0=" " py-4=" ">
+                <h5 class="fw-bold">@item.Items.Name</h5>
+                <p class="opacity-75 mb-1 fw-bold ">Price: $@item.Items.Price</p>
+                <i class="fas fa-star py-2" style="color: rgb(255, 192, 34);"></i>
+                <i class="fas fa-star" style="color: rgb(255, 192, 34);"></i>
+                <i class="fas fa-star" style="color: rgb(255, 192, 34);"></i>
+                <i class="fas fa-star" style="color: rgb(255, 192, 34);"></i>
+                <i class="fas fa-star" style="color: rgb(255, 192, 34);"></i>
+                <p class="opacity-75">Catagory: Sport</p>
+
+                <a href="/Fav/DeleteItem/@item.ItemId" class="favBtn rounded-circle p-2  fav5 fas fa-heart fa-2x "></a>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+
+
+}

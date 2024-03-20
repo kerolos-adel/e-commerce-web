@@ -1,0 +1,129 @@
+﻿
+@model IEnumerable<e_commerce_web.database.Cart>
+
+@{
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+<div class="d-flex justify-content-between align-items-center mb-5">
+    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+</div>
+@{var count = 0;}
+@foreach (var item in Model)
+{
+
+
+    <hr class="my-4">
+
+    <div class="row mb-4 d-flex justify-content-between align-items-center">
+        <div class="col-md-2 col-lg-2 col-xl-2">
+            <img src="~/uploads/images/@item.Items.Image_ID"
+                 class="img-fluid rounded-3">
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <h6 class="text-muted">@ViewBag.catName</h6>
+            <h6 class="text-black mb-0">@item.Items.Name</h6>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <button class="btn btn-link px-2"
+                    onclick="Decrease(@item.Id)">
+                <i class="fas fa-minus"></i>
+            </button>
+
+            <input id="@item.Id" min="0" name="quantity" value="@item.Quantity" type="number"
+                   class="form-control form-control-sm" />
+
+            <button class="btn btn-link px-2"
+                    onclick="Increase(@item.Id)">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        @{item.Price = item.Price * item.Quantity;}
+        
+    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+        @{var name = $"price{item.Id}";
+        <h6 id="@name" class="mb-0">€@item.Price</h6>
+        }
+
+    </div>
+
+        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+            <a href="/Cart/DeleteItem/@item.ItemId" class="text-muted"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    count++;
+
+
+}
+@section Order{
+    <div class="p-5">
+        <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+        <hr class="my-4">
+
+        <div class="d-flex justify-content-between mb-4">
+            <h5 class="text-uppercase">items @count</h5>
+        </div>
+        <hr class="my-4">
+
+        <div class="d-flex justify-content-between mb-5">
+            <h5 class="text-uppercase">Total price</h5>
+            <h5 id="totalprice">€@ViewBag.totalprice</h5>
+        </div>
+
+        <a href="/Cart/Order" type="button" class="btn btn-dark btn-block btn-lg"
+           data-mdb-ripple-color="dark">
+            Order Now
+        </a>
+
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function Increase(id) {
+        var uri = '/Cart/Increase';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { itemId: id },
+            success: function (result) {
+                var input = document.getElementById(id);
+                var tp = document.getElementById("totalprice");
+                var price = "price" + id;
+                var p = document.getElementById(price);
+                input.value = parseInt(input.value) + 1;
+                tp.innerHTML = "€" + result.Totalprice;
+                p.innerHTML = "€" + result.Price;
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+<script>
+    function Decrease(id) {
+        var uri = '/Cart/Decrease';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { itemId: id },
+            success: function (result) {
+
+                var input = document.getElementById(id);
+                var tp = document.getElementById("totalprice");
+                var price = "price" + id;
+                var p = document.getElementById(price);
+
+                if (parseInt(input.value) > 1)
+                    input.value = parseInt(input.value) - 1;
+                tp.innerHTML = "€" + result.Totalprice;
+                p.innerHTML = "€" + result.Price;
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-secondary bg-opacity-10">
+
+    <header>
+        <nav class="navbar py-2 shadow bg-white">
+            <div class="container justify-content-center">
+                <a class="navbar-brand fs-1 position-relative" style="font-weight: 800;"
+                    href="index.html">Selling</a>
+            </div>
+        </nav>
+    </header>
+
+        <div class="container my-5 ">
+          
+            
+            <style>
+                .title::before{
+                    content: "";
+                    position: absolute;
+                    width: 60%;
+                    height: 3px;
+                    bottom: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: var(--primary);
+                    
+                }
+                </style>
+              
+        <div class="row gy-5">
+            <div id="productsContainer" class="col-lg-8  p-3 rounded border shadow bg-white">
+               
+            </div>
+            <div class="col-lg-4 p-0 ps-lg-4">
+
+                <div class="bg bg-white p-3 shadow rounded">
+                    <label class="text-center d-block fw-bold opacity-75 py-2" for="promoCode">ENTER PROMO CODE</label>
+                    <div class=" d-flex flex-column ">
+                        <input type="text" class=" px-2  my-2" id="promoCode" style="padding: 5px 0; border: 1px solid rgb(197, 197, 197);" placeholder="Promo Code">
+                        <button class="btn mb-1 rounded-0 fw-bold btn4 bg-white border-2 border-black ">SUBMIT</button>
+                    </div>
+                    <div class="d-flex flex-column mt-4">
+                        <div class="d-flex opacity-50 fw-bold justify-content-between">
+                            <p>Shipping Cost</p>
+                            <p>Free</p>
+                        </div>
+                        <div class="d-flex opacity-50 fw-bold justify-content-between">
+                            <p>Discount</p>
+                            <p>0%</p>
+                        </div>
+                        <div class="d-flex opacity-50 fw-bold justify-content-between">
+                            <p>Tax</p>
+                            <p>$0</p>
+                        </div>
+                        <div class="fw-bold fs-4 d-flex justify-content-between">
+                            <p>Total</p>
+                            <p id="total">$500</p>
+                        </div>
+                        <button class="btn mb-1 rounded-0 fw-bold bg-black border-2 text-white border-black ">Proceed To Checkout <i class="fas fa-shopping-bag fs-5 fa-fw"></i></button>
+                            <button onclick="loadHome()" class="btn mb-1 rounded-0 fw-bold  border-black border-2 bg-white text-black ">Continue Shopping </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="bg-black py-5">
+            <div class="container-lg">
+                <div class="row text-white gy-5">
+                    <div class="col-lg-3 col-md-6 ">
+                        <h3 class="fw-bold foot-title position-relative fs-1 " style="width: fit-content;">Selling </h3>
+                        <p class="pt-2 opacity-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere
+                            laudantium magnam voluptatum autem. Amet aliquid
+                            nesciunt veritatis aliquam.</p>
+                        <i style="padding: 10px 11px; font-size: 15px; background-color: var(--primary);"
+                            class=" icon rounded-circle fab fa-facebook-f"></i>
+                        <i class="p-2 icon rounded-circle fab fa-twitter" style="background-color: var(--primary);"></i>
+                        <i class="p-2 icon rounded-circle fab fa-google" style="background-color: var(--primary);"></i>
+                        <i class="p-2 icon rounded-circle fab fa-instagram"
+                            style="font-size: 17px; background-color: var(--primary);"></i>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Offers</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 15px;"><i
+                                class="fas fa-angle-right fa-fw fs-5"></i> Proberties</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Agents</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Locations</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Clients Support</p>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Company</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 15px;"><i
+                                class="fas fa-angle-right fa-fw fs-5"></i> Company</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            About</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Blog</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Contact Us</p>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Quick Links</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 14px;"><i
+                                class="fas fa-angle-right fa-fw fs-5"></i> Terms & Condations</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            User's Guide</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Support Center</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Press Info</p>
+                    </div>
+                    <div class="col-lg-3 col-6 ">
+                        <h4 class="fw-bold">Have a Question?</h4>
+                        <div class="d-flex gap-3  pt-4 ">
+                            <i class="fas fa-map" style="color: var(--primary);"></i>
+                            <p class="opacity-75 "> 203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        </div>
+                        <div class="d-flex gap-3  ">
+                            <i class="fas fa-phone-alt fa-fw" style="color: var(--primary);"></i>
+                            <p class="opacity-75"> +2 392 3929 210</p>
+                        </div>
+                        <div class="d-flex gap-3  ">
+                            <i class="fas fa-envelope fa-fw" style="color: var(--primary);"></i>
+                            <p class="opacity-75"> info@me.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

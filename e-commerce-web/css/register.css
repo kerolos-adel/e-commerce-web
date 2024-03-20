@@ -1,0 +1,96 @@
+:root {
+    --primary: #f16821;
+}
+
+body {
+    font-family: 'Mulish', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+i {
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-size: 15px;
+    font-style: italic;
+    color: rgb(173, 173, 173);
+
+}
+
+input:focus,
+textarea:focus {
+    outline: 1px solid var(--primary);
+}
+
+input,
+textarea {
+    caret-color: var(--primary);
+    resize: none;
+}
+::selection {
+
+    background: black;
+    color: white;
+}
+.nav-link {
+    transition: .3s;
+    font-weight: bold;
+}
+
+.nav-link:hover,
+.select {
+    color: var(--primary) !important
+}
+
+.navbar-brand::after,
+.foot-title::after{
+    position: absolute;
+    content: ".";
+    width: 20px;
+    height: 20px;
+    right: -20px;
+    top: 0px;
+    color: var(--primary);
+}
+.btn1:hover {
+    background-color: #fff !important;
+    color: black !important;
+}
+
+.btn2:hover {
+    background-color: transparent !important;
+    color: white;
+}
+
+.btn3:hover {
+    color: white !important;
+    background-color: var(--primary) !important;
+}
+
+.btn4:hover {
+    color: white !important;
+    background-color: black !important;
+}
+.favBtn {
+    transition: .3s;
+    cursor: pointer;
+    top: 0px;
+    right: 0px;
+    background-color: rgb(230, 230, 230);
+    color: red
+}

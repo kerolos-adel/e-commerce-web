@@ -1,0 +1,56 @@
+﻿@model e_commerce_web.Models.RegistrationViewModel
+
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    <div class="col-12">
+        <h2 style="font-weight: 800;">Register</h2>
+    </div>
+    <hr>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-md-6 ">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="col-12">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-12">
+        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-12">
+        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+    </div>
+    <div class="col-12">
+        <p style="color: red; margin: 0; text-align: center; font-weight: bold; display: none;">This account doesn't exist!</p>
+        <input type="submit" value="Create" class="w-100 mt-2 py-2 btn fw-bold btn3 text-white"
+               style="transition: .3s; background-color: var(--primary); font-size: 20px;">
+    </div>
+    <h6 class="pt-3 text-center fw-bold">Already have an account? <a href="/Account/Login">Log in</a></h6>
+}
+
+<script src="~/js/register.js"></script>

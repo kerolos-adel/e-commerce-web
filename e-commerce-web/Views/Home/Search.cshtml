@@ -1,0 +1,359 @@
+﻿
+@model List<e_commerce_web.Models.ItemViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    SelectList cat = new SelectList(ViewBag.cat, "Id", "Name");
+
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="~/css/all.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <style>
+        .favBtn {
+            transition: .3s;
+            cursor: pointer;
+            top: -20px;
+            right: -20px;
+            background-color: rgb(230, 230, 230);
+            color: red;
+        }
+    </style>
+    <style>
+        .favBtn2 {
+            transition: .3s;
+            cursor: pointer;
+            top: -20px;
+            right: -20px;
+            background-color: rgb(230, 230, 230);
+            color: rgb(187, 187, 187);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body style="overflow: hidden;">
+
+    <div class="loader-container ">
+        <div class="loader"></div>
+    </div>
+    <header>
+        <!-- position-fixed z-3 bg-white w-100 -->
+        <nav class="navbar navbar-expand-lg py-2 shadow position-fixed z-2 bg-white w-100 ">
+            <div class="container ">
+                <a class="navbar-brand position-relative fs-1 " style="font-weight: 800;" href="#">Selling</a>
+
+                <a id="cart" class="me-lg-5 position-relative text-center fas fa-shopping-cart fs-3 order-lg-last border-0 bg-transparent" href="/Cart/ShowCartItems"></a>
+                <a class="me-lg-5 position-relative text-center fas fa-heart fs-3 order-lg-last border-0 bg-transparent" href="/Fav/ShowFavItems"></a>
+
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3 ">
+                            <a class="nav-link active select " aria-current="page" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item px-3 ">
+                            <a class="nav-link active" aria-current="page" href="#products">Products</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#about">About Us</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#special">Special</a>
+                        </li>
+
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
+                        </li>
+
+                        @if (@ViewBag.name == null)
+                        {
+
+
+                            <a class="nav-link active" aria-current="page" href="/Account/SignOut">SignIn</a>
+
+                        }
+                        else
+                        {
+
+                            <a class="nav-link active" aria-current="page" href="/Account/SignOut">LogOut</a>
+                            <li class="nav-link active" aria-current="page">
+                                wlcome, @ViewBag.name
+                            </li>
+
+
+                        }
+
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="/Home/MyOrders">My Orders</a>
+                        </li>
+                        <li class="nav-item px-3 dropdown " style="display: none;" id="user">
+                            <a class="nav-link active  dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a class="dropdown-item fw-bold" href="profile.html">Profile</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class="">
+                                    <a class="dropdown-item fw-bold" href="cartItems.html">View Cart</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class=" " id="logout">
+                                    <a class="dropdown-item fw-bold" id="logoutLink" href="index.html">Log out</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <form method="get" action="/Home/Search">
+                                <input type="text" style="border: 2px solid rgb(60, 60, 60);" name="ItemName" placeholder="Item name">
+                                <input type="submit" value="search" class="btn btn-success" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <section id="products" class="position-relative">
+        <div class="row mt-3 gy-5 justify-content-center">
+            <div class="heading text-center" style="margin: 30px 0 50px 0; ">
+                <h2>Our PRODUCTS</h2>
+
+
+            </div>
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-md-6 col-lg-3 box">
+
+                    <div class="text-center rounded">
+
+                        <div class="image overflow-hidden position-relative">
+                            <img src="~/uploads/images/@item.Image_ID" loading="lazy" class="img-fluid  bg-secondary bg-opacity-10 rounded-top" alt="Golden Watch">
+                        </div>
+                        <div class="px-4 py-4 border border-top-0 position-relative">
+                            <h5 class="fw-bold">@item.Name</h5>
+                            <p class="opacity-75 mb-1 " style="">Price: $@item.Price</p>
+                            @if (item.IsFav)
+                            {
+
+                                <i id="@item.Id" onclick="addToFav(@item.Id)" class="favBtn position-absolute rounded-circle p-2  fav0 fas fa-heart fa-2x "></i>
+                            }
+                            else
+                            {
+                                <i id="@item.Id" onclick="addToFav(@item.Id)" class="favBtn2 position-absolute rounded-circle p-2  fav0 fas fa-heart fa-2x "></i>
+                            }
+                            @if (!item.IsInCart)
+                            {
+                                var name = $"btn{item.Id}";
+                                <i id="@name" onclick="addToCart2(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Add To Cart</i>
+                            }
+                            else
+                            {
+                                var name = $"btn{item.Id}";
+                                <i id="@name" onclick="addToCart2(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Remove From Cart</i>
+                            }
+
+                            <a href="/Home/ItemInformation/@item.Id" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="margin-left:30px; transition: .3s;  border: 2px solid var(--primary); ">More Information</a>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            }
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="bg-black py-5">
+            <div class="container-lg">
+                <div class="row text-white gy-5">
+                    <div class="col-lg-3 col-md-6 ">
+                        <h3 class="fw-bold foot-title position-relative fs-1 " style="width: fit-content;">Selling </h3>
+                        <p class="pt-2 opacity-75">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid
+                            nesciunt veritatis aliquam.
+                        </p>
+                        <i style="padding: 10px 11px; font-size: 15px; background-color: var(--primary);"
+                           class=" icon rounded-circle fab fa-facebook-f"></i>
+                        <i class="p-2 icon rounded-circle fab fa-twitter" style="background-color: var(--primary);"></i>
+                        <i class="p-2 icon rounded-circle fab fa-google" style="background-color: var(--primary);"></i>
+                        <i class="p-2 icon rounded-circle fab fa-instagram"
+                           style="font-size: 17px; background-color: var(--primary);"></i>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Offers</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i> Proberties
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Agents
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Locations
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Clients Support
+                        </p>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Company</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i> Company
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            About
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Blog
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Contact Us
+                        </p>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Quick Links</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 14px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i> Terms & Condations
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            User's Guide
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Support Center
+                        </p>
+                        <p class="text opacity-75" style="font-size: 15px;">
+                            <i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Press Info
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-6 ">
+                        <h4 class="fw-bold">Have a Question?</h4>
+                        <div class="d-flex gap-3  pt-4 ">
+                            <i class="fas fa-map" style="color: var(--primary);"></i>
+                            <p class="opacity-75 "> 203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        </div>
+                        <div class="d-flex gap-3  ">
+                            <i class="fas fa-phone-alt fa-fw" style="color: var(--primary);"></i>
+                            <p class="opacity-75"> +2 392 3929 210</p>
+                        </div>
+                        <div class="d-flex gap-3  ">
+                            <i class="fas fa-envelope fa-fw" style="color: var(--primary);"></i>
+                            <p class="opacity-75"> info@me.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/js/search.js" defer></script>
+    <script src="~/js/bootstrap.bundle.min.js" defer></script>
+    <script src="~/js/countDown.js" defer></script>
+    <script src="~/js/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.all.min.js"></script>
+</body>
+</html>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addToCart2(id) {
+        var uri = '/Cart/AddToCart';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { itemId: id },
+            success: function (result) {
+                var value = "btn" + id;
+                var cart = document.getElementById(value);
+                if (result.islogin == false) {
+
+
+                    bootbox.alert("please login..!");
+
+                }
+                else if (result.value == true) {
+
+                    cart.innerHTML = "Add To Cart";
+
+                }
+                else {
+
+                    cart.innerHTML = "Remove From Cart";
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+<script>
+    function addToFav(id) {
+        var uri = '/Fav/AddToFav';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { itemId: id },
+            success: function (result) {
+                var icon = document.getElementById(id);
+
+                if (result.value == true) {
+
+                    icon.classList.add("favBtn");
+                    icon.classList.remove("favBtn2");
+
+                }
+                else {
+
+                    icon.classList.remove("favBtn");
+                    icon.classList.add("favBtn2");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootbox.min.js"></script>
+
+
+
+
+
+

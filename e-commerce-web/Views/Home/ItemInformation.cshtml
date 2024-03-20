@@ -1,0 +1,61 @@
+﻿@model e_commerce_web.database.Item
+
+@{
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ItemInformation</title>
+</head>
+<body>
+    <div>
+        <h4>@Model.Name</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dd>
+                <div class="image overflow-hidden position-relative">
+                    <img src="~/uploads/images/@Model.Image_ID" loading="lazy" class="img-fluid  bg-secondary bg-opacity-10 rounded-top" alt="Golden Watch">
+                </div>
+
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Discount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Discount)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </dt>
+
+            <dd>
+                <h3>@ViewBag.catName</h3>
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>
+@section Order{
+   
+    <h4 style="margin-top: 60px">Description</h4>
+    <hr style="margin-top:15px" />
+
+    <h5 style="padding:20px">@Model.Description</h5>
+
+
+}

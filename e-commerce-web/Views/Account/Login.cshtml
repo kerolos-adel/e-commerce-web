@@ -1,0 +1,38 @@
+﻿@model e_commerce_web.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.ReturnUrl)
+            <div class="col-12">
+                <h2 style="font-weight: 800;">Login</h2>
+            </div>
+            <hr>
+            <div class="col-12">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-12">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12">
+                <p style="color: red; margin: 0; text-align: center; font-weight: bold; display: none;" id="err">This account doesn't exist!</p>
+                <input type="submit" value="Log in" class="w-100 mt-2 py-2 btn fw-bold btn3 text-white"
+                       style="transition: .3s; background-color: var(--primary); font-size: 20px;">
+            </div>
+            <h6 class="pt-3 text-center fw-bold">Dont't have an account? <a href="/Account/Register">Register</a></h6>
+        }
+    <script src="~/js/login.js"></script>
+
+

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<e_commerce_web.database.Order>
+
+@{
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+
+
+<div class="d-flex justify-content-between align-items-center mb-5">
+    <h1 class="fw-bold mb-0 text-black">Orders</h1>
+</div>
+
+<hr class="my-4">
+
+<div class="row mb-5 d-flex justify-content-between align-items-center">
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Order Id</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Total Price</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Delivary Name</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Arrived After</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Condition</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Details</h4>
+        }
+
+    </div>
+
+
+
+
+</div>
+
+
+
+@foreach (var item in Model)
+{
+
+
+    <hr class="my-4">
+
+    <div class="row mb-8 d-flex justify-content-between align-items-center">
+
+        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+            <h6 class="text-black mb-0">@item.Id</h6>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+            @{
+                <h6 class="mb-0">€@item.TotlaPrice</h6>
+            }
+
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+            @if (@item.DelivaryName != null)
+            {
+                <h6 style="color:green">@item.DelivaryName</h6>
+            }
+            else
+            {
+                <h6 style="color:yellow" class="mb-0">Waiting...</h6>
+            }
+
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+            @if (@item.Days != null)
+            {
+                <h6 style="color:green">@item.Days Days</h6>
+            }
+            else
+            {
+                <h6 style="color:yellow" class="mb-0">Waiting...</h6>
+            }
+          
+
+        </div>
+
+
+
+        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+            @if (@item.isAccepted == true)
+            {
+                <h6 style="color:green">Accepted</h6>
+            }
+            else
+            {
+                <h6 style="color:yellow" class="mb-0">Waiting...</h6>
+            }
+
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+            @{
+                @Html.ActionLink("Details", "MyOrdersDetails", new { id = item.Id })}
+        </div>
+
+    </div>
+
+ 
+
+
+}
+
+
+@section Order{}
+

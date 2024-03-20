@@ -1,0 +1,290 @@
+
+:root{
+    --primary: #f16821;
+}
+
+
+body{
+    font-family: 'Mulish', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(250, 244, 244);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 20px;
+}
+html {
+    scroll-behavior: smooth;
+}
+ul {
+    list-style: none;
+}
+
+button,i {
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-size: 15px;
+    font-style: italic;
+    color: rgb(173, 173, 173);
+   
+}
+
+input:focus,
+textarea:focus {
+    outline: 1px solid var(--primary);
+}
+
+input,
+textarea {
+    caret-color: var(--primary);
+    resize: none;
+}
+section{
+    margin-top: 80px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    appearance:  textfield;
+    -moz-appearance: textfield;
+}
+input:invalid{
+    border: 2px solid red;
+    box-shadow: 0 0 5px red;
+}
+
+/* Firefox */
+::selection {
+
+  background: black;
+  color: white;
+}
+.loader-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    z-index: 10;
+    height: 100vh;
+    width: 100%;
+}
+.loader{
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--primary);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: 1s spinner alternate ease-in-out infinite;
+}
+
+@keyframes spinner {
+    to{
+        transform: rotate(1turn) scale(1.2);
+    }
+}
+.heading h6{
+    color: rgb(189, 189, 189);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.heading h2{
+    font-weight: 900;
+    font-size: 40px;
+    color: black;
+}
+.heading p{
+    max-width: 300px ;
+    margin: auto;
+    opacity: .7;
+}
+#items-con{
+    border: 2px solid rgb(50, 50, 50);
+    cursor: default;
+    transform: translate(-100%, 25px);
+    left: 100%;
+    font-family: 'Mulish';
+    display: none;
+        
+}
+@media (max-width:991px) {
+    #items-con{
+        left: 50%;
+        transform: translate(-55%,24px);
+    }
+}
+.nav-link{
+    transition: .3s;
+    font-weight: bold;
+}
+.nav-link:hover,
+.select{
+   color: var(--primary) !important
+}
+.dropdown-item{
+    transition: .3s;
+}
+.dropdown-item:hover{
+    color: var(--primary) !important;
+    background-color: white !important;
+}
+
+.navbar-brand::after,
+.foot-title::after{
+    position: absolute;
+    content: ".";
+    width: 20px;
+    height: 20px;
+    right: -20px;
+    top: 0px;
+    color: var(--primary);
+}
+
+main{
+    
+    height: 100vh;
+    background-image: url(../images/hero.jpg);
+    background-size: cover;
+    /* background-position: center; */
+    z-index: 1;
+    opacity: 0;
+    /* transform: translateY(150px); */
+    transition: .5s;
+    /* top: 100px; */
+}
+
+main::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.btn1:hover{
+    background-color: #fff;
+    color: black !important;
+}
+.btn2:hover{
+    background-color: transparent !important;
+    color: white;
+}
+.btn3:hover{
+    color: white !important;
+    background-color: var(--primary) !important;
+}
+.btn4:hover {
+    color: white !important;
+    background-color: black !important;
+}
+@media (max-width:767px) {
+    h1{
+        font-size: 35px !important;
+    }
+    main{
+        background-position: center;
+    }
+    .notified{
+        background-position:center;
+    }
+    .tag{
+        bottom: 0 !important;
+        right: 12px !important;
+        
+    }
+    .tag h2{
+        font-size: 30px !important;
+    }
+    .mx{
+       max-width: 400px !important; 
+    }
+    .favBtn{
+        top: 0 !important;
+        right: 0 !important;
+    }
+}
+
+#products img{
+    transition: .3s;
+
+}
+
+#products .box:hover img{
+    transform: scale(1.1);
+}
+#products .image::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--primary);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: .3s;
+}
+#products .box:hover .image::after{
+    width: 90%;
+    height: 90%;
+    opacity: 1;
+}
+
+
+.notified{
+    position: relative;
+    background-image: url(../images/hero.jpg);
+    background-size: cover;
+    z-index: 1;
+}
+.notified::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.507);
+    z-index: -1;
+}
+
+.icon{
+    transition: .3s;
+}
+.icon:hover{
+    background-color: var(--primary) !important;
+}
+.text {
+    transition: .3s;
+    cursor: pointer;
+}
+
+.text:hover {
+    color: var(--primary);
+}
+.favBtn{
+    transition: .3s;
+    cursor: pointer;
+    top: -20px;
+    right: -20px;
+    background-color: rgb(230, 230, 230);
+    color: rgb(187, 187, 187);
+}

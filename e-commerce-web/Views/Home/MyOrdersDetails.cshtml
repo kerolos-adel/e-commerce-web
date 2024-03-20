@@ -1,0 +1,58 @@
+﻿@model List<e_commerce_web.Models.ItemOrderViewModel>
+
+@{
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+<div class="row mb-5 d-flex justify-content-between align-items-center">
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Product Name</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Quantity</h4>
+        }
+
+    </div>
+    <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-0">
+        @{
+            <h4 class="mb-0">Price</h4>
+        }
+
+
+
+
+
+</div>
+@foreach (var item in Model)
+{
+
+
+    <hr class="my-4">
+
+    <div class="row mb-4 d-flex justify-content-between align-items-center">
+       
+        <div class="col-md-3 col-lg-3 col-xl-3">
+            <h6 class="text-black mb-0">@item.ItemName</h6>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <input id="@item.Id" min="0" name="quantity" value="@item.Quantity" type="number"
+                   class="form-control form-control-sm" />
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+            @{var name = $"price{item.Id}";
+                <h6 id="@name" class="mb-0">€@item.Price</h6>
+            }
+
+        </div>
+
+    </div>
+
+    <hr class="my-4">
+   
+
+
+}
+@section Order{}

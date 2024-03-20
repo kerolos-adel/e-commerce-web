@@ -1,0 +1,66 @@
+﻿@model List<e_commerce_web.Models.ItemOrderViewModel>
+
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <p>
+        <h1>UserName: @ViewBag.username</h1>
+    </p>
+    <table class="table">
+        <tr>
+
+            <th>
+                <h2>Item Id</h2>
+            </th>
+            <th>
+                <h2>Item Name</h2>
+            </th>
+            <th>
+                <h2>Price</h2>
+            </th>
+            <th>
+                <h2>Quantity</h2>
+            </th>
+
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <div style="margin-left:30%">
+        @Html.ActionLink("Accept Order", "Accept",new { id = @ViewBag.IdOrder })
+    </div>
+
+</body>
+</html>

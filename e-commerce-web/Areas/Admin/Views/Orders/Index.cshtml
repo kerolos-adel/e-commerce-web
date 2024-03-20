@@ -1,0 +1,80 @@
+﻿@model IEnumerable<e_commerce_web.database.Order>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotlaPrice)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotlaPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                    @if (!item.isAccepted)
+                    {
+                    
+                        <i id="@item.Id" onclick="AcceptOrder(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Accept Order</i>
+                    }
+                    else
+                    {
+                      
+                        <i id="@item.Id" onclick="AcceptOrder(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Not Accept Order</i>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function AcceptOrder(id) {
+        var uri = '/Orders/AcceptOrder';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { Id: id },
+            success: function (result) {
+                var accept = document.getElementById(id);
+                if (result.value == true) {
+                    
+                    accept.innerHTML = "Accept Order";
+
+                }
+                else {
+
+                    accept.innerHTML = "Not Accept Order";
+                }
+            },
+            
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>

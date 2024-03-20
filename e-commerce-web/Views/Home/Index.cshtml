@@ -1,0 +1,265 @@
+﻿@model List<e_commerce_web.Models.ItemViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SelectList cat = new SelectList(ViewBag.cat, "Id", "Name");
+
+
+}
+
+@section welcome
+{
+
+    @if (@ViewBag.name == null)
+    {
+
+
+        <a class="nav-link active" aria-current="page" href="/Account/SignOut" style="font-size:25px">SignIn</a>
+
+    }
+    else
+    {
+        <li class="nav-link active" aria-current="page">
+            wlcome, @ViewBag.name
+        </li>
+        <a class="nav-link active" aria-current="page" href="/Account/SignOut" style="font-size:25px">LogOut</a>
+
+
+
+    }
+
+}
+
+
+@section cartfav{
+
+    <a id="cart" class="cartBtn1 me-lg-5 position-relative text-center fas fa-shopping-cart fs-3 order-lg-last border-0 bg-transparent" href="/Cart/ShowCartItems"></a>
+    <a class="favBtn1 position-absolute fav0 fas fa-heart fa-2x " href="/Fav/ShowFavItems"></a>
+
+
+}
+
+<div class="container-md">
+    <div class="heading text-center" style="margin: 30px 0 50px 0; ">
+        <h6>AWESOME PRODUCTS</h6>
+        <h2>Featured Products</h2>
+    </div>
+    @{bool flag = true;}
+
+    @foreach (var item in Model)
+    {
+
+        if (item.FeaturedProducts == true)
+        {
+            var x = item.Price - item.Discount;
+
+            if (flag == true)
+            {
+                <div class="bg-white p-5 ">
+                    <div class="row justify-content-between align-items-center gy-5">
+                        <div class="col-lg-6">
+                            <img src="~/uploads/images/@item.Image_ID" loading="lazy" class=" h-100 img-fluid w-100 bg-secondary bg-opacity-10 rounded" alt="watch">
+                        </div>
+                        <div class="col-lg-5">
+                            <h2 class="fw-bold pb-4">About This Product</h2>
+                            <p class="text-secondary">
+                                @item.Description
+                            </p>
+                            <h3 class="fw-bold">Price:</h3>
+                            <p class="text-secondary fw-bold"><del class="opacity-50 px-2">$@item.Price</del> $@x</p>
+                            <a href="/Home/ItemInformation/@item.Id" class="btn btn4 fw-bold rounded-0 border-2 px-4 mt-2 border-black">LEARN MORE</a>
+                            @if (!item.IsInCart)
+                            {
+                                var name = $"btn{item.Id}";
+                                <i id="@name" onclick="addToCart2(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Add To Cart</i>
+                            }
+                            else
+                            {
+                                var name = $"btn{item.Id}";
+                                <i id="@name" onclick="addToCart2(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Remove From Cart</i>
+                            }
+                        </div>
+                    </div>
+                </div>
+                flag = false;
+            }
+
+            else if (flag == false)
+            {
+                <div class="bg-white p-5 mt-4">
+                    <div class="row justify-content-between align-items-center gy-5">
+                        <div class="col-lg-5 order-last order-lg-first ">
+                            <h2 class="fw-bold pb-4">About This Product</h2>
+                            <p class="text-secondary">
+                                @item.Description
+                            </p>
+
+                            <h3 class="fw-bold">Price:</h3>
+                            <p class="text-secondary fw-bold"><del class="opacity-50 px-2">$@item.Price</del> $@x</p>
+                            <button class="btn btn4 fw-bold rounded-0 border-2 px-4 mt-2 border-black">LEARN MORE</button>
+                        </div>
+                        <div class="col-lg-6 orderfirst order-lg-last">
+                            <img src="~/uploads/images/@item.Image_ID" loading="lazy" class=" img-fluid w-100  bg-secondary bg-opacity-10 rounded" alt="watch">
+                        </div>
+
+                    </div>
+                </div>
+                flag = true;
+            }
+        }
+
+
+    }
+</div>
+
+
+<div class="row mt-3 gy-5 justify-content-center">
+    <div class="heading text-center" style="margin: 30px 0 50px 0; ">
+        <h2>Our PRODUCTS</h2>
+
+
+    </div>
+    @foreach (var item in Model)
+    {
+
+
+        <div class="col-md-6 col-lg-3 box">
+
+            <div class="text-center rounded">
+
+                <div class="image overflow-hidden position-relative">
+                    <img src="~/uploads/images/@item.Image_ID" loading="lazy" class="img-fluid  bg-secondary bg-opacity-10 rounded-top" alt="Golden Watch">
+                </div>
+                <div class="px-4 py-4 border border-top-0 position-relative">
+                    <h5 class="fw-bold">@item.Name</h5>
+                    <p class="opacity-75 mb-1 " style="">Price: $@item.Price</p>
+                    @if (item.IsFav)
+                    {
+
+                        <i id="@item.Id" onclick="addToFav(@item.Id)" class="favBtn position-absolute rounded-circle p-2  fav0 fas fa-heart fa-2x "></i>
+                    }
+                    else
+                    {
+                        <i id="@item.Id" onclick="addToFav(@item.Id)" class="favBtn2 position-absolute rounded-circle p-2  fav0 fas fa-heart fa-2x "></i>
+                    }
+                    @if (!item.IsInCart)
+                    {
+                        var name = $"btn{item.Id}";
+                        <i id="@name" onclick="addToCart2(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Add To Cart</i>
+                    }
+                    else
+                    {
+                        var name = $"btn{item.Id}";
+                        <i id="@name" onclick="addToCart2(@item.Id)" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="transition: .3s;  border: 2px solid var(--primary); ">Remove From Cart</i>
+                    }
+
+                    <a href="/Home/ItemInformation/@item.Id" class="border-2 border-black bg-white cartBtn1 btn py-2 rounded-0 fw-bold btn4 text-black" style="margin-left:30px; transition: .3s;  border: 2px solid var(--primary); ">More Information</a>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    }
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addToCart2(id) {
+        var uri = '/Cart/AddToCart';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { itemId: id },
+            success: function (result) {
+                var value = "btn" + id;
+                var cart = document.getElementById(value);
+                if (result.islogin == false) {
+
+
+                    bootbox.alert("please login..!");
+
+                }
+                else if (result.value == true) {
+
+                    cart.innerHTML = "Add To Cart";
+
+                }
+                else {
+
+                    cart.innerHTML = "Remove From Cart";
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+<script>
+    function addToFav(id) {
+        var uri = '/Fav/AddToFav';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            data: { itemId: id },
+            success: function (result) {
+                var icon = document.getElementById(id);
+
+                if (result.islogin == false) {
+
+
+                    bootbox.alert("please login..!");
+
+                }
+                else if (result.value == true) {
+
+                    icon.classList.add("favBtn");
+                    icon.classList.remove("favBtn2");
+
+                }
+                else {
+
+                    icon.classList.remove("favBtn");
+                    icon.classList.add("favBtn2");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootbox.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btnInfo').on('click', function () {
+
+                    bootbox.alert("please login..!");
+
+            });
+        });
+    </script>*@
+
+
+
+
+

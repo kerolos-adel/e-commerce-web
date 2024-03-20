@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body style="overflow: hidden;">
+
+    <div class="loader-container ">
+        <div class="loader"></div>
+    </div>
+    <header>
+        <!-- position-fixed z-3 bg-white w-100 -->
+        <nav class="navbar navbar-expand-lg py-2 shadow position-fixed z-2 bg-white w-100 ">
+            <div class="container ">
+                <a class="navbar-brand position-relative fs-1 " style="font-weight: 800;" href="#">Selling</a>
+                <button style="display: none"  id="cart" class="me-lg-5   position-relative text-center fas fa-shopping-cart fs-3 order-lg-last border-0 bg-transparent" aria-current="page" href="index.html" >
+                    <p id="productsNum" onclick="showItems('e')" class="position-absolute text-white end-0 fs-6 rounded-circle"  style="padding: 2px 5px; top: 20px;  background-color: var(--primary);">0</p>
+                    <div id="items-con" class="  px-3 flex-column position-absolute bg-white px-2 py-3 rounded" style="min-width: 300px;" >
+                        <!-- onblur='hideCart()' -->
+                        
+                        
+
+                    </div>
+                </button>
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3 ">
+                            <a class="nav-link active select " aria-current="page" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item px-3 ">
+                            <a class="nav-link active" aria-current="page" href="#products">Products</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#about">About Us</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#special">Special</a>
+                        </li>
+            
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
+                        </li>
+                        <li class="nav-item px-3" id="login">
+                            <a class="nav-link active" aria-current="page"  href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item px-3" id="register">
+                            <a class="nav-link active" aria-current="page"  href="register.html">Join us</a>
+                        </li>
+                        <li class="nav-item px-3 dropdown " style="display: none;"   id="user">
+                            <a class="nav-link active  dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                      
+                            <ul class="dropdown-menu">
+                                <li class="" >
+                                    <a class="dropdown-item fw-bold" href="profile.html">Profile</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class="" >
+                                    <a class="dropdown-item fw-bold" href="cartItems.html">View Cart</a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li class=" " id="logout" >
+                                    <a class="dropdown-item fw-bold" id="logoutLink" href="index.html">Log out</a>
+                                </li>   
+                            </ul>
+                        </li>
+                    </ul>    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main id="home" class="position-relative">
+        <div class="container">
+            <div class="position-absolute text-white" style="top: 40%;">
+                <h1 style="font-size: 80px; font-weight: 800;">Shop With Us</h1>
+                <p style="max-width: 60%; font-size: 18px; " class="pb-4 mx ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga
+                officia.</p>
+                <button class="btn px-4 py-3 btn1 text-white border-white rounded-0" style="font-size: 13px; font-weight: 800; border-width: 2px;">SHOP NOW</button>
+                <button class="btn px-4 py-3 btn2 bg-white border-white rounded-0" style="font-size: 13px; font-weight: 800; border-width: 2px;">LEARN MORE</button>
+            </div>
+        </div>  
+    </main>
+  
+
+   
+<section id="about">
+    <div class="container-md">
+        <div class="row align-items-center justify-content-between gy-5">
+            <div class="col-lg-8 position-relative">
+                <div class="position-absolute px-4 py-3 text-white tag "
+                    style="background-color: var(--primary); bottom: -10px; right: -10px; background-color: var(--primary);">
+                    <h2 style="font-weight: 800; font-size: 40px;">Trusted Merchant</h2>
+                    <p>FOR 28 YEARS</p>
+                </div>
+                <img src="images/meeting.jpg" loading="lazy" class="img-fluid" alt="people">
+            </div>
+            <div class="col-lg-3">
+                <div class="heading text-center text-lg-start">
+                    <h6>MERCHANT COMPANY</h6>
+                    <h2>About Us</h2>
+                    <p class="pb-4 m-auto mx m-lg-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui fuga
+                        ipsa, repellat blanditiis nihil, consectetur.
+                        Consequuntur eum inventore, rem maxime, nisi excepturi ipsam libero ratione adipisci alias eius
+                        vero vel!</p>
+                    <button class="btn btn4 fw-bold rounded-0 border-2 px-4 mt-2 border-black">LEARN MORE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class=" notified">
+        <div class="container-fluid">
+            <div class=" text-white text-center" style="padding: 80px 0 140px 0;">
+                <h2 class="py-5">Get notified on every update.</h2>
+                <div class="row  justify-content-center ">
+                    <div class="col-6">
+                        <div class="d-flex justify-content-center">
+                            <input type="email" name="" placeholder="Enter your email"
+                            class="bg-transparent py-0 px-2 text-white flex-grow-1"
+                            style=" border: 2px solid white ; " id="">
+                            <button class="btn btn1 rounded-0 fw-bold border text-white" 
+                            style="border-width: 2px !important;"
+                            >SUBSCRIBE</button>
+                        </div>
+                    </div>
+                </div>
+                <p class="pt-3 mx" style="max-width: 500px; margin: auto;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat commodi veniam doloremque ducimus tempora.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-secondary bg-opacity-10 m-0 py-5">
+        <div class="container-md">
+            <div class="heading text-center"  style="margin: 30px 0 50px 0; ">
+                <h6>AWESOME PRODUCTS</h6>
+                <h2>Featured Products</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nostrum natus excepturi fuga ullam accusantium vel
+                ut eveniet aut consequatur laboriosam ipsam.</p>
+            </div>
+            <div class="bg-white p-5 ">
+                <div class="row justify-content-between align-items-center gy-5">
+                    <div class="col-lg-6">
+                        <img src="images/model1.jpg" loading="lazy" class=" h-100 img-fluid w-100 bg-secondary bg-opacity-10 rounded" alt="watch">
+                    </div>
+                    <div class="col-lg-5">
+                        <h2 class="fw-bold pb-4">About This Product</h2>
+                        <p class="text-secondary">Et tempora id nostrum saepe amet doloribus deserunt totam officiis cupiditate asperiores quasi accusantium voluptatum
+                        dolorem quae sapiente voluptatem ratione odio iure blanditiis earum fuga molestiae alias dicta perferendis inventore!</p>
+                        <p class="pb-3 text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus soluta assumenda sed optio, error at?</p>
+                        <h3 class="fw-bold">Price:</h3>
+                        <p class="text-secondary fw-bold"><del class="opacity-50 px-2">$300.00</del> $200.00</p>
+                    <button class="btn btn4 fw-bold rounded-0 border-2 px-4 mt-2 border-black">LEARN MORE</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bg-white p-5 mt-4">
+                <div class="row justify-content-between align-items-center gy-5">
+                    <div class="col-lg-5 order-last order-lg-first ">
+                        <h2 class="fw-bold pb-4">About This Product</h2>
+                        <p class="text-secondary">Et tempora id nostrum saepe amet doloribus deserunt totam officiis cupiditate
+                            asperiores quasi accusantium voluptatum
+                            dolorem quae sapiente voluptatem ratione odio iure blanditiis earum fuga molestiae alias dicta
+                            perferendis inventore!</p>
+                        <p class="pb-3 text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus soluta
+                            assumenda sed optio, error at?</p>
+                            <h3 class="fw-bold">Price:</h3>
+                            <p class="text-secondary fw-bold"><del class="opacity-50 px-2">$200.00</del> $100.00</p>
+                        <button class="btn btn4 fw-bold rounded-0 border-2 px-4 mt-2 border-black">LEARN MORE</button>
+                    </div>
+                    <div class="col-lg-6 orderfirst order-lg-last">
+                        <img src="images/model4.jpg" loading="lazy" class=" img-fluid w-100  bg-secondary bg-opacity-10 rounded" alt="watch">
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="heading text-center">
+                <h6>POPULAR PRODUCTS</h6>
+                <h2>Our Products</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nostrum natus excepturi fuga ullam
+                    accusantium vel
+                    ut eveniet aut consequatur laboriosam ipsam.</p>
+            </div>
+            <div class="row gy-4 mt-5 justify-content-center">
+                <div class="col-md-3">
+                    <label class="fw-bold d-block text-center" for="">Search with Name</label>
+                    <input type="text" style="border: 2px solid rgb(60, 60, 60);" class=" w-100 mt-2 px-2 py-1" name=""
+                        id="Pname" placeholder="Product name">
+                </div>
+                <div class="col-md-4">
+                    <label class="fw-bold d-block text-center" for="">Search with Catagory</label>
+                    <input type="text" style="border: 2px solid rgb(60, 60, 60);" class=" w-100  mt-2 px-2 py-1" name=""
+                        id="Pcatagory" placeholder="Product catagory">
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-bold d-block text-center" for="">Search with Budget</label>
+                    <input type="number" style="border: 2px solid rgb(60, 60, 60);" class=" w-100  mt-2 px-2 py-1" name=""
+                        id="budget" placeholder="Your budget">
+                </div>
+            </div>
+            <div class="row mt-3 gy-5 justify-content-center" id="productsContainer">
+    
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-secondary bg-opacity-10" style="padding: 80px 0;">
+        <div class="container">
+            <div class="heading text-center pb-5">
+                <h6>TEAM</h6>
+                <h2>Leadership</h2>
+            </div>
+            <div class="row gy-5 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="text-center shadow">
+                        <div class="position-relative">
+                            <img src="images/team-shape.svg" class="position-absolute" style="bottom: -10px;" alt="">
+                            <img src="images/person_2.jpg" loading="lazy" class="img-fluid " alt="team member">
+                        </div>
+                        <div class=" bg-white p-4 border">
+                            <h3 class="">John Rooster</h3>
+                            <p class="opacity-50">CO-FOUNDER, PRESIDENT</p>
+                            <p class="text-secondary mx m-auto pb-3">Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio
+                            cupiditate tempore suscipit inventore deserunt tenetur.</p>
+                            <i class="fab fa-facebook-f  rounded-circle bg-secondary icon py-2 mx-1 text-white" style="padding: 0 11px;"></i>
+                            <i class="fab fa-twitter px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                            <i class="fab fa-linkedin-in px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                            <i class="fab fa-instagram px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="text-center shadow">
+                        <div class="position-relative">
+                            <img src="images/team-shape.svg" class="position-absolute" style="bottom: -10px;" alt="">
+                            <img src="images/person_3.jpg" loading="lazy" class="img-fluid" alt="team member">
+                        </div>
+                        <div class="bg-white border p-4" >
+                            <h3 class="">Mark Ethan</h3>
+                            <p class="opacity-50">MARKETING, HR </p>
+                            <p class="text-secondary mx m-auto pb-3">Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio
+                            cupiditate tempore suscipit inventore deserunt tenetur.</p>
+                            <i class="fab fa-facebook-f  rounded-circle bg-secondary icon py-2 mx-1 text-white" style="padding: 0 11px;"></i>
+                            <i class="fab fa-twitter px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                            <i class="fab fa-linkedin-in px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                            <i class="fab fa-instagram px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="text-center shadow">
+                        <div class="position-relative">
+                            <img src="images/team-shape.svg" class="position-absolute" style="bottom: -10px;" alt="">
+                            <img src="images/person_4.jpg" loading="lazy" class="img-fluid " alt="team member">
+                        </div>
+                        <div class="bg-white border  p-4">     
+                            <h3 class="">Harry Paul</h3>
+                            <p class="opacity-50">DESIGNER, ARTIST</p>
+                            <p class="text-secondary mx m-auto pb-3">Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio
+                            cupiditate tempore suscipit inventore deserunt tenetur.</p>
+                            <i class="fab fa-facebook-f  rounded-circle bg-secondary icon py-2 mx-1 text-white" style="padding: 0 11px;"></i>
+                            <i class="fab fa-twitter px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                            <i class="fab fa-linkedin-in px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                            <i class="fab fa-instagram px-2 rounded-circle bg-secondary icon py-2 mx-1 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="special" class=" notified mt-0">
+        <div class="container-fluid text-center py-5">
+            <div class="heading  py-5">
+                <h6>SPECIAL PROMO</h6>
+                <h2 class="text-white">Summer Sale</h2>
+                <p class="text-white fs-5 opacity-100 fw-light mx" style="max-width: 500px; margin: auto;">Repudiandae nostrum natus excepturi fuga ullam accusantium laboriosam ipsam.</p>
+            </div>
+            <div class=" text-white" >
+                <div class="d-flex justify-content-center flex-wrap gap-2 ">
+                    <div style="width: 80px;font-size: 14px; ">
+                        <div class="p-3 bg-white text-black rounded"> 
+                            <h3 style=" font-weight: bold;" id="days">06</h3>
+                            <p>Days</p>
+                        </div> 
+                    </div>
+                    <div style="width: 80px;font-size: 14px; ">
+                        <div class="p-3 bg-white text-black rounded"> 
+                            <h3 style=" font-weight: bold;" id="hours">23</h3>
+                            <p>Hours</p>
+                        </div> 
+                    </div>
+                    <div style="width: 80px;font-size: 14px; ">
+                        <div class="p-3 bg-white text-black rounded"> 
+                            <h3 style=" font-weight: bold; " id="minutes">1</h3>
+                            <p>Minutes</p>
+                        </div> 
+                    </div>
+                    <div style="width: 80px;font-size: 14px; ">
+                        <div class="p-3 bg-white text-black rounded"> 
+                            <h3 style=" font-weight: bold;" id="seconds">30</h3>
+                            <p>Seconds</p>
+                        </div> 
+                    </div>
+                </div>
+                <button class="m-auto d-block my-5 px-4   btn btn1 rounded-0 fw-bold border text-white" style="border-width: 2px !important;">SUBSCRIBE</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-secondary bg-opacity-10 mt-0 py-5">
+        <div class="container ">
+            <div class="heading text-center pb-5">
+                <h6>OUR SERVICES</h6>
+                <h2>We Offer Services</h2>
+            </div>
+            <div class="row my-3 gy-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex flex-column flex-md-row text-center text-md-start gap-3">
+                        <i class="fas fa-chart-pie fa-2x mt-1" style="color: var(--primary);"></i>
+                        <div>
+                            <h4>Business Consulting</h4>
+                            <p class="text-secondary mx m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary);">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex flex-column flex-md-row text-center text-md-start gap-3">
+                        <i class="far fa-chart-bar fa-2x mt-1" style="color: var(--primary);"></i>
+                        <div>
+                            <h4>Market Analysis</h4>
+                            <p class="text-secondary mx m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary);">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex flex-column flex-md-row text-center text-md-start gap-3">
+                        <i class="fas fa-user fa-2x mt-1" style="color: var(--primary);"></i>
+                        <div>
+                            <h4>User Monitoring</h4>
+                            <p class="text-secondary mx m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary);">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex flex-column flex-md-row text-center text-md-start gap-3">
+                        <i class="fas fa-check-square fa-2x mt-1" style="color: var(--primary);"></i>
+                        <div>
+                            <h4>Seller Consulting</h4>
+                            <p class="text-secondary mx m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary);">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex flex-column flex-md-row text-center text-md-start gap-3">
+                        <i class="fas fa-briefcase fa-2x mt-1" style="color: var(--primary);"></i>
+                        <div>
+                            <h4>Financial Investment</h4>
+                            <p class="text-secondary mx m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary);">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="d-flex flex-column flex-md-row text-center text-md-start gap-3">
+                        <i class="fas fa-cloud-upload-alt fa-2x mt-1" style="color: var(--primary);"></i>
+                        <div>
+                            <h4>Financial Management</h4>
+                            <p class="text-secondary mx m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
+                            <a href="#" class="text-decoration-none" style="color: var(--primary);">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="pb-5">
+        <div class="container">
+            <div class="heading text-center pb-5">
+                <h6>WHAT PEOPLE SAY</h6>
+                <h2>Testimonials</h2>
+            </div>
+            <div id="carouselExample" class="carousel slide text-center" data-bs-ride="carousel">
+                <div class="carousel-indicators " style="bottom: -25px !important; ">
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1" style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--primary); "></button>
+                    <button type="button" style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--primary);" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--primary);" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/person_2.jpg" loading="lazy" class="img-fluid rounded-circle" style="width: 250px;" alt="...">
+                        <h4 class="m-auto  pt-5 opacity-50 mx" style="font-style: italic; max-width: 800px; line-height: 1.8;">&quot;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatum. Consequatur, ipsum! Ea ipsum numquam corrupti animi! Voluptas,
+                             debitis vitae doloribus officiis cupiditate voluptatem delectus porro nam eum 
+                             aspernatur&quot;</h4>
+                             <h6 class="py-4 fw-bold">John Smith</h6>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/person_3.jpg" loading="lazy" class="img-fluid rounded-circle" style="width: 250px;" alt="...">
+                        <h4 class="m-auto  pt-5 opacity-50 mx" style="font-style: italic; max-width: 800px; line-height: 1.8;">&quot;Lorem,
+                            ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatum. Consequatur, ipsum! Ea ipsum numquam
+                            corrupti animi! Voluptas,
+                            debitis vitae doloribus officiis cupiditate voluptatem delectus porro nam eum
+                            aspernatur&quot;</h4>
+                            <h6 class="py-4 fw-bold">Mike Ropert</h6>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/person_4.jpg" loading="lazy" class="img-fluid rounded-circle" style="width: 250px;" alt="...">
+                        <h4 class="m-auto  pt-5 opacity-50 mx" style="font-style: italic; max-width: 800px; line-height: 1.8;">&quot;Lorem,
+                            ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatum. Consequatur, ipsum! Ea ipsum numquam
+                            corrupti animi! Voluptas,
+                            debitis vitae doloribus officiis cupiditate voluptatem delectus porro nam eum
+                            aspernatur&quot;</h4>
+                            <h6 class="py-4 fw-bold">Harry Lweis</h6>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="blog" class="bg-secondary bg-opacity-10">
+        <div class="container">
+            <div class="heading text-center pt-5">
+                <h6>BLOG</h6>
+                <h2>Blog Posts</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4  my-5">
+                    <div>
+                        <img src="images/image_1.jpg" loading="lazy" class="img-fluid" alt="">
+                        <div class="border p-3 px-4 bg-white">
+                            <h4 class="">Attractive Blog Title</h4>
+                            <span style="font-size: 14px;" class="opacity-50">Ham Brook</span>
+                            <span style="font-size: 14px;" class="opacity-50 px-3">Jan 18, 2019</span>
+                            <span class="" style="color: var(--primary);">News</span>
+                            <p class="py-3 text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis
+                            reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+                            <button class="fw-bold btn btn4 border-2 rounded-0 border-black">Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4  my-5">
+                    <div>
+                        <img src="images/image_3.jpg" loading="lazy" class=" img-fluid " alt="">
+                        <div class="border p-3 px-4 bg-white">
+                            <h4 class="">Attractive Blog Title</h4>
+                            <span style="font-size: 14px;" class="opacity-50">James Phelp</span>
+                            <span style="font-size: 14px;" class="opacity-50 px-3">Jan 18, 2019</span>
+                            <span class="" style="color: var(--primary);">News</span>
+                            <p class="py-3 text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis
+                            reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+                            <button class="fw-bold btn btn4 border-2 rounded-0 border-black" >Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4  my-5">
+                    <div>
+                        <img src="images/model2.jpg" loading="lazy" class="img-fluid w-100" alt="">
+                        <div class="border p-3 px-4 bg-white">
+                            <h4 class="">Attractive Blog Title</h4>
+                            <span style="font-size: 14px;" class="opacity-50">Ham Brook</span>
+                            <span style="font-size: 14px;" class="opacity-50 px-3">Jan 18, 2019</span>
+                            <span class="" style="color: var(--primary);">News</span>
+                            <p class="py-3 text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis
+                            reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+                            <button class="fw-bold btn btn4 border-2 rounded-0 border-black">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="heading text-center">
+                <h6>CONTACT FORM</h6>
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="row my-5">
+                <div class="col-lg-4 px-0">
+                    <img src="images/model1.jpg" loading="lazy" class="img-fluid w-100 h-100" alt="">
+                </div>
+                     <div class="col-lg-8 p-5 bg-secondary bg-opacity-10 ">
+                        <div class="row gy-3 align-items-center">
+                            <div class="col-lg-6 ">
+                                <div>
+                                    <label for="fn" class="pb-2 " style="font-weight: 500;">First Name</label>
+                                    <input id="fn" type="text" class="w-100 p-2 border-1 border-secondary border-opacity-25" placeholder="Enter your first name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div >
+                                    <label for="ln" class="pb-2 " style="font-weight: 500;">Last Name</label>
+                                    <input id="ln" type="text" class="w-100 p-2 border-1 border-secondary border-opacity-25" placeholder="Enter your last name">
+                                </div>
+                            </div>     
+                            <div class="col-lg-6">
+                                <div >
+                                    <label for="em" class="pb-2 " style="font-weight: 500;">Email</label>
+                                    <input id="em" type="email" class="w-100 p-2 border-1 border-secondary border-opacity-25" placeholder="Enter your email">
+                                </div>
+                            </div>     
+                            <div class="col-lg-6">
+                                <div >
+                                    <label for="sub" class="pb-2 " style="font-weight: 500;">Subject</label>
+                                    <input id="sub" type="text" class="w-100 p-2 border-1 border-secondary border-opacity-25" placeholder="Enter the subject">
+                                </div>
+                            </div>     
+                            <div class="col-12">
+                                <div >
+                                    <label for="mes" class="pb-2 " style="font-weight: 500;">Message</label>
+                                    <textarea name="mes" id="" cols="30" rows="6"class="w-100 p-2 border-1 border-secondary border-opacity-25" placeholder="Write your notes or questions here..." ></textarea>
+                                </div>
+                            </div>   
+                        </div>
+                        <button class="btn btn4 border-black fw-bold rounded-0 border-2 px-4 my-3 d-block m-auto">Send Message</button>  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="bg-black py-5">
+            <div class="container-lg">
+                <div class="row text-white gy-5">
+                    <div class="col-lg-3 col-md-6 ">
+                        <h3 class="fw-bold foot-title position-relative fs-1 " style="width: fit-content;">Selling </h3>
+                        <p class="pt-2 opacity-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid
+                        nesciunt veritatis aliquam.</p>
+                        <i style="padding: 10px 11px; font-size: 15px; background-color: var(--primary);"
+                            class=" icon rounded-circle fab fa-facebook-f"></i>
+                        <i class="p-2 icon rounded-circle fab fa-twitter" style="background-color: var(--primary);"></i>
+                        <i class="p-2 icon rounded-circle fab fa-google" style="background-color: var(--primary);"></i>
+                        <i class="p-2 icon rounded-circle fab fa-instagram"
+                            style="font-size: 17px; background-color: var(--primary);"></i>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Offers</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 15px;"><i
+                                class="fas fa-angle-right fa-fw fs-5"></i> Proberties</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Agents</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Locations</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Clients Support</p>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Company</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 15px;"><i
+                                class="fas fa-angle-right fa-fw fs-5"></i> Company</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            About</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Blog</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Contact Us</p>
+                    </div>
+                    <div class="col-lg-2 col-6 ">
+                        <h4 class="fw-bold">Quick Links</h4>
+                        <p class="text opacity-75 pt-4" style="font-size: 14px;"><i
+                                class="fas fa-angle-right fa-fw fs-5"></i> Terms & Condations</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            User's Guide</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Support Center</p>
+                        <p class="text opacity-75" style="font-size: 15px;"><i class="fas fa-angle-right fa-fw fs-5"></i>
+                            Press Info</p>
+                    </div>
+                    <div class="col-lg-3 col-6 ">
+                        <h4 class="fw-bold">Have a Question?</h4>
+                        <div class="d-flex gap-3  pt-4 ">
+                            <i class="fas fa-map" style="color: var(--primary);"></i>
+                            <p class="opacity-75 "> 203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        </div>
+                        <div class="d-flex gap-3  ">
+                            <i class="fas fa-phone-alt fa-fw" style="color: var(--primary);"></i>
+                            <p class="opacity-75"> +2 392 3929 210</p>
+                        </div>
+                        <div class="d-flex gap-3  ">
+                            <i class="fas fa-envelope fa-fw" style="color: var(--primary);"></i>
+                            <p class="opacity-75"> info@me.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/search.js" defer></script>
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/countDown.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>
